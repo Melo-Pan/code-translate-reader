@@ -1,0 +1,15 @@
+# 排除开发文件和临时文件
+.git
+.vscode/**
+**/*.ts
+!src/**/*.d.ts
+**/*.map
+.gitignore
+tsconfig.json
+.history/**
+esbuild.js
+**/*.vsix
+
+# 确保包含图片
+!image.png
+!images/**

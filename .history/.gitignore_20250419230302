@@ -1,0 +1,2 @@
+node_modules\n.vscode\ndist\nout\n*.vsix\n.history
+node_modules

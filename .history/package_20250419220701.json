@@ -1,0 +1,154 @@
+{
+  "name": "code-translate-reader",
+  "displayName": "代码翻译与朗读助手",
+  "description": "一个支持翻译和朗读功能的VSCode插件，帮助非英语母语者学习代码/文档中的专有名词",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:code-translate-reader.translateSelection",
+    "onCommand:code-translate-reader.readSelection"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "code-translate-reader.translateSelection",
+        "title": "翻译选中文本"
+      },
+      {
+        "command": "code-translate-reader.readSelection",
+        "title": "朗读选中文本"
+      },
+      {
+        "command": "code-translate-reader.configureTranslationService",
+        "title": "配置翻译服务"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "code-translate-reader.translateSelection",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "code-translate-reader.readSelection",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorHasSelection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "code-translate-reader.translateSelection",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        },
+        {
+          "command": "code-translate-reader.readSelection",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "code-translate-reader.configureTranslationService",
+          "group": "翻译朗读助手"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "代码翻译与朗读助手",
+      "properties": {
+        "codeTranslateReader.translationService": {
+          "type": "string",
+          "enum": ["google", "baidu", "youdao"],
+          "default": "google",
+          "description": "选择翻译服务提供商（百度和有道更适合中国网络环境）"
+        },
+        "codeTranslateReader.baiduAppId": {
+          "type": "string",
+          "default": "",
+          "description": "百度翻译API的AppID（需要在百度开发者平台申请）"
+        },
+        "codeTranslateReader.baiduAppSecret": {
+          "type": "string",
+          "default": "",
+          "description": "百度翻译API的密钥（需要在百度开发者平台申请）"
+        },
+        "codeTranslateReader.youdaoAppKey": {
+          "type": "string",
+          "default": "",
+          "description": "有道翻译API的应用ID（需要在有道智云平台申请）"
+        },
+        "codeTranslateReader.youdaoAppSecret": {
+          "type": "string",
+          "default": "",
+          "description": "有道翻译API的应用密钥（需要在有道智云平台申请）"
+        },
+        "codeTranslateReader.targetLanguage": {
+          "type": "string",
+          "default": "zh-CN",
+          "description": "目标翻译语言（例如：zh-CN, en, ja, ko等）"
+        },
+        "codeTranslateReader.voiceSpeed": {
+          "type": "number",
+          "default": 1,
+          "description": "语音朗读速度（范围：0.5-2.0）"
+        },
+        "codeTranslateReader.showOriginalText": {
+          "type": "boolean",
+          "default": true,
+          "description": "在翻译结果中是否显示原文"
+        },
+        "codeTranslateReader.hoverDuration": {
+          "type": "number",
+          "default": 5000,
+          "description": "悬浮窗显示时间（毫秒）"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/debug": "^4.1.12",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.23.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "crypto-js": "^4.2.0",
+    "node-google-translate-free": "^0.1.0",
+    "node-powershell": "^5.0.1",
+    "say": "^0.16.0"
+  }
+}
