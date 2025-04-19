@@ -4,7 +4,7 @@ A VSCode extension that provides code translation and text-to-speech functionali
 
 [中文文档](README.md)
 
-![Code Translate Reader Demo](./image.png)
+![Code Translate Reader Demo](https://raw.githubusercontent.com/Melo-Pan/code-translate-reader/main/image.png)
 
 ## Features
 

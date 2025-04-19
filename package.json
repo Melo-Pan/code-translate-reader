@@ -2,11 +2,11 @@
   "name": "code-translate-reader",
   "displayName": "代码翻译与朗读助手",
   "description": "一个支持翻译和朗读功能的VSCode插件，帮助非英语母语者学习代码/文档中的专有名词",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "qiuyu",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/code-translate-reader"
+    "url": "https://github.com/Melo-Pan/code-translate-reader"
   },
   "license": "MIT",
   "keywords": [

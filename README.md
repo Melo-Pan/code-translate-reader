@@ -2,7 +2,7 @@
 
 这个VSCode插件为开发者提供了代码和文本的翻译与朗读功能，特别适合非英语母语的开发者理解代码中的专有名词和英文注释。
 
-![代码翻译与朗读助手演示](./image.png)
+![代码翻译与朗读助手演示](https://raw.githubusercontent.com/Melo-Pan/code-translate-reader/main/image.png)
 
 ## 功能特点
 
